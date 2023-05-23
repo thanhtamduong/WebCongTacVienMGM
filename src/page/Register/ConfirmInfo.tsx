@@ -23,7 +23,7 @@ const ConfirmInfo = () => {
     setOpen(false);
   };
   return (
-    <Container component="main" maxWidth="xs" sx={{ mb: "39px" }}>
+    <Container component="main" maxWidth="md" sx={{ mb: "39px" }}>
       <CssBaseline />
       <div
         style={{
@@ -84,27 +84,36 @@ const ConfirmInfo = () => {
             >
               Xác nhận & Tiếp tục giới thiệu
             </Button>
-            <Dialog
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-            >
-              <DialogContent>
-                <Grid item sx={{ display: "flex", justifyContent: "center" }}>
-                  <img src={IconSuccess} alt="iconSuccess" />
-                </Grid>
-                <Grid item>
-                  <DialogTitle
-                    sx={{ fontSize: "20px", fontWeight: 700, color: "#212B36" }}
-                  >
-                    Đăng ký thành công
-                  </DialogTitle>
-                </Grid>
-              </DialogContent>
-            </Dialog>
           </Grid>
         </form>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogContent
+            sx={{
+              width: {
+                xs: "294px",
+                sm: "336px",
+                md: "436px",
+              },
+            }}
+          >
+            <Grid item sx={{ display: "flex", justifyContent: "center" }}>
+              <img src={IconSuccess} alt="iconSuccess" />
+            </Grid>
+            <Grid item>
+              <DialogTitle
+                textAlign={"center"}
+                sx={{ fontSize: "20px", fontWeight: 700, color: "#212B36" }}
+              >
+                Đăng ký thành công
+              </DialogTitle>
+            </Grid>
+          </DialogContent>
+        </Dialog>
       </div>
     </Container>
   );
