@@ -17,7 +17,7 @@ const Verification = () => {
     navigate(path);
   };
   return (
-    <Container component="main" maxWidth="xl" sx={{ mb: "24px" }}>
+    <Container component="main" maxWidth="md" sx={{ mb: "13px" }}>
       <CssBaseline />
       <div
         style={{
@@ -31,19 +31,17 @@ const Verification = () => {
         }}
       >
         <Typography
-          sx={{
-            fontSize: {
-              xs: "22px",
-              sm: "32px",
-              md: "42px",
-              lg: "52px",
-              xl: "62px",
-            },
-            fontWeight: "600",
-            color: "#BE1128",
-            textAlign: "center",
-            m: "40px 0 2px 0",
+          fontSize={{
+            xs: "22px",
+            sm: "32px",
+            md: "38px",
+            lg: "42px",
+            xl: "62px",
           }}
+          fontWeight={"600"}
+          color={"#BE1128"}
+          textAlign={"center"}
+          margin={"40px 0 2px 0"}
         >
           XÁC THỰC
         </Typography>
@@ -53,8 +51,6 @@ const Verification = () => {
               xs: "12px",
               sm: "22px",
               md: "32px",
-              lg: "42px",
-              xl: "52px",
             },
             textAlign: "center",
             fontWeight: 400,
@@ -120,7 +116,6 @@ const Verification = () => {
                   color: "black",
                   textAlign: "center",
                   fontWeight: 400,
-                  mb: "40px",
                 }}
               >
                 89s
@@ -146,72 +141,25 @@ const Verification = () => {
                 fontWeight: 700,
                 textTransform: "none",
                 borderRadius: "50px",
-                my: "40px",
               }}
               onClick={routeChange}
             >
               Xác nhận
             </Button>
             <Grid
+              textAlign={"center"}
+              fontSize={{
+                xs: "12px",
+                sm: "22px",
+                md: "28px",
+              }}
+              marginY={"40px"}
               item
               xs={12}
-              sx={{
-                textAlign: "center",
-                my: "40px",
-                fontSize: {
-                  xs: "12px",
-                  sm: "22px",
-                  md: "28px",
-                  lg: "32px",
-                  xl: "36px",
-                },
-              }}
             >
               <Link href="#">Gửi lại OTP</Link>
             </Grid>
           </Grid>
-          {/* <Grid textAlign={"center"} padding={"16px 24px"}>
-            <Button
-              sx={{
-                color: "#212B36",
-                m: "16px 0 24px 0",
-                background: "#FFD643",
-                fontSize: {
-                  xs: "18px",
-                  sm: "28px",
-                  md: "30px",
-                  lg: "38px",
-                  xl: "38px",
-                },
-                fontWeight: 700,
-                textTransform: "none",
-                width: "140px",
-                height: "58px",
-                borderRadius: "50px",
-                mt: "40px",
-              }}
-              onClick={routeChange}
-            >
-              Xác nhận
-            </Button>
-            <Grid
-              item
-              xs={12}
-              sx={{
-                textAlign: "center",
-                my: "40px",
-                fontSize: {
-                  xs: "12px",
-                  sm: "22px",
-                  md: "28px",
-                  lg: "32px",
-                  xl: "36px",
-                },
-              }}
-            >
-              <Link href="#">Gửi lại OTP</Link>
-            </Grid>
-          </Grid> */}
         </form>
       </div>
     </Container>

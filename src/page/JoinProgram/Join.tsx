@@ -30,49 +30,51 @@ const Join = () => {
         }}
       >
         <Typography
-          sx={{
-            fontSize: "22px",
-            fontWeight: "600",
-            color: "#BE1128",
-            textAlign: "center",
-            margin: "32px 0 40px 0",
+          fontSize={{
+            xs: "22px",
+            sm: "32px",
+            md: "38px",
           }}
+          fontWeight={"600"}
+          color={"#BE1128"}
+          textAlign={"center"}
+          margin={"32px 0 40px 0"}
         >
           THAM GIA CHƯƠNG TRÌNH
         </Typography>
         <form>
-          <Grid
-            container
-            spacing={2}
-            sx={{
-              justifyContent: "center",
-            }}
-          >
+          <Grid justifyContent={"center"} container spacing={2}>
             <Grid item xs={12}>
-              <Typography>Số điện thoại</Typography>
-              <TextField
-                sx={{ mt: "4px" }}
-                variant="outlined"
-                required
-                fullWidth
-                id=""
-                label=""
-                name=""
-                autoComplete=""
-              />
+              <Typography
+                m={"16px 0 4px 0"}
+                fontSize={{
+                  xs: "14px",
+                  sm: "20px",
+                  md: "24px",
+                }}
+              >
+                Số điện thoại
+              </Typography>
+              <TextField sx={{ mt: "4px" }} variant="outlined" fullWidth />
             </Grid>
             <Button
               onClick={routeChange}
               sx={{
+                "&.MuiButtonBase-root:hover": {
+                  background: "#FFD643",
+                },
+                padding: "16px 24px",
                 color: "#212B36",
                 background: "#FFD643",
-                fontSize: "18px",
+                fontSize: {
+                  xs: "18px",
+                  sm: "24px",
+                  md: "30px",
+                },
                 fontWeight: 700,
                 textTransform: "none",
-                width: "140px",
-                height: "58px",
                 borderRadius: "50px",
-                m: "40px 0 40px 0",
+                my: "40px",
               }}
             >
               Xác nhận
