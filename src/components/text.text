@@ -1,0 +1,24 @@
+import { makeStyles } from '@mui/styles';
+import Grid from '@mui/material/Grid';
+
+const useStyles = makeStyles((theme) => ({
+  gridItem: {
+    fontSize: '16px', // Kích thước font chữ mặc định
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '14px', // Kích thước font chữ cho màn hình nhỏ hơn
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '18px', // Kích thước font chữ cho màn hình lớn hơn
+    },
+  },
+}));
+
+const MyComponent = () => {
+  const classes = useStyles();
+
+  return (
+    <Grid item sm={8} xs={12} md={8} lg={10.5} className={classes.gridItem}>
+      Truy vấn khách hàng tiềm năng
+    </Grid>
+  );
+};
