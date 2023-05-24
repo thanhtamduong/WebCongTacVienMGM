@@ -9,14 +9,25 @@ import {
 
 const Detail = () => {
   return (
-    <Container component="main" maxWidth="lg" sx={{ mb: "19px" }}>
+    <Container
+      component="main"
+      maxWidth="md"
+      sx={{
+        mb: "19px",
+        mt: {
+          xs: "-52px",
+          sm: "-94px",
+          md: "-112px",
+          lg: "-136px",
+        },
+      }}
+    >
       <CssBaseline />
       <div
         style={{
           border: "1px solid #EAEEF2",
           borderRadius: "8px",
           boxShadow: "0px 2px 0px rgba(33, 43, 54, 0.05)",
-          marginTop: "-62px",
           transform: "translate(10px, 10px)",
           background: "white",
         }}
