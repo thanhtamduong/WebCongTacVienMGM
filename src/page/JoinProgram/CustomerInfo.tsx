@@ -6,7 +6,6 @@ import {
   Divider,
   Grid,
   IconButton,
-  Link,
   TextField,
   Typography,
 } from "@mui/material";
@@ -15,18 +14,26 @@ import IosShareIcon from "@mui/icons-material/IosShare";
 import QRHd from "../../assets/images/qr.svg";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 // import NotificationNGT from "./NotificationNGT";
 import { useNavigate } from "react-router-dom";
 import NotificationUpdateNGT from "./NotificationUpdateNGT";
 import NotificationNGT from "./NotificationNGT";
-
+import React, { useState } from "react";
+import {
+  DatePicker,
+  DateTimePicker,
+  LocalizationProvider,
+} from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 const CustomerInfo = () => {
   let navigate = useNavigate();
   const routeChange = () => {
     let path = `detail`;
     navigate(path);
   };
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState<any>();
   return (
     <Container maxWidth="md" sx={{ mb: "19px" }}>
       <CssBaseline />
@@ -61,264 +68,271 @@ const CustomerInfo = () => {
                   Hồ sơ giới thiệu
                 </Typography>
               </Grid>
-              <Grid item xs={1} sx={{ mt: "10px", textAlign: "right" }}>
+              <Grid
+                item
+                xs={1}
+                sx={{ mt: "10px", textAlign: "right" }}
+                onClick={() => setShow(!show)}
+              >
                 <IconButton>
-                  <KeyboardArrowDownIcon />
+                  {show === false ? (
+                    <KeyboardArrowDownIcon />
+                  ) : (
+                    <KeyboardArrowUpIcon />
+                  )}
                 </IconButton>
               </Grid>
             </Grid>
             <Divider sx={{ my: "16px" }} />
-            <Grid mb={"16px"} container justifyContent={"space-between"}>
+            <Grid mb={"16px"}>
               {/* //Event */}
-              {/* 1 */}
-              {/* <Grid container justifyContent={"space-between"}>
-            <Grid item>
-              <Typography
-                sx={{
-                  color: "#7E8996",
-                  fontSize: {
-                    xs: "12px",
-                    sm: "28px",
-                    md: "24px",
-                    lg: "38px",
-                    xl: "62px",
-                  },
-                }}
-              >
-                Số lượng hồ sơ đã giới thiệu
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                sx={{
-                  color: "#212B36",
-                  fontSize: {
-                    xs: "14px",
-                    sm: "28px",
-                    md: "24px",
-                    lg: "38px",
-                    xl: "62px",
-                  },
-                }}
-              >
-                50
-                <KeyboardArrowRightIcon
-                  sx={{
-                    transform: "translate(-5px, 4px)",
-                    color: "#7E8996",
-                    ml: "10px",
-                  }}
-                />
-              </Typography>
-            </Grid>
-          </Grid> */}
-              {/* 2 */}
-              {/* <Grid container justifyContent={"space-between"}>
-            <Grid item>
-              <Typography
-                sx={{
-                  color: "#7E8996",
-                  fontSize: {
-                    xs: "12px",
-                    sm: "28px",
-                    md: "24px",
-                    lg: "38px",
-                    xl: "62px",
-                  },
-                }}
-              >
-                Số lượng hồ sơ chưa hoàn tất
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                sx={{
-                  color: "#212B36",
-                  fontSize: {
-                    xs: "14px",
-                    sm: "28px",
-                    md: "24px",
-                    lg: "38px",
-                    xl: "62px",
-                  },
-                }}
-              >
-                5{" "}
-                <KeyboardArrowRightIcon
-                  sx={{
-                    transform: "translate(-5px, 4px)",
-                    color: "#7E8996",
-                    ml: "10px",
-                  }}
-                />
-              </Typography>
-            </Grid>
-          </Grid> */}
-              {/* 3 */}
-              {/* <Grid container justifyContent={"space-between"}>
-            <Grid item>
-              <Typography
-                sx={{
-                  color: "#7E8996",
-                  fontSize: {
-                    xs: "12px",
-                    sm: "28px",
-                    md: "24px",
-                    lg: "38px",
-                    xl: "62px",
-                  },
-                }}
-              >
-                Số lượng hồ sơ hoàn tất
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                sx={{
-                  color: "#212B36",
-                  fontSize: {
-                    xs: "14px",
-                    sm: "28px",
-                    md: "24px",
-                    lg: "38px",
-                    xl: "62px",
-                  },
-                }}
-              >
-                45{" "}
-                <KeyboardArrowRightIcon
-                  sx={{
-                    transform: "translate(-5px, 4px)",
-                    color: "#7E8996",
-                    ml: "10px",
-                  }}
-                />
-              </Typography>
-            </Grid>
-          </Grid> */}
-              {/* 4 */}
-              {/* <Grid container justifyContent={"space-between"}>
-            <Grid item>
-              <Typography
-                sx={{
-                  color: "#7E8996",
-                  fontSize: {
-                    xs: "12px",
-                    sm: "28px",
-                    md: "24px",
-                    lg: "38px",
-                    xl: "62px",
-                  },
-                }}
-              >
-                Số lượng hồ sơ HDBank từ chối
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                sx={{
-                  color: "#212B36",
-                  fontSize: {
-                    xs: "14px",
-                    sm: "28px",
-                    md: "24px",
-                    lg: "38px",
-                    xl: "62px",
-                  },
-                }}
-              >
-                2{" "}
-                <KeyboardArrowRightIcon
-                  sx={{
-                    transform: "translate(-5px, 4px)",
-                    color: "#7E8996",
-                    ml: "10px",
-                  }}
-                />
-              </Typography>
-            </Grid>
-          </Grid> */}
-              {/* 5 */}
-              {/* <Grid container justifyContent={"space-between"}>
-            <Grid item>
-              <Typography
-                sx={{
-                  color: "#7E8996",
-                  fontSize: {
-                    xs: "12px",
-                    sm: "28px",
-                    md: "24px",
-                    lg: "38px",
-                    xl: "62px",
-                  },
-                }}
-              >
-                Số lượng hồ sơ HDBank đã duyệt
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                sx={{
-                  color: "#212B36",
-                  fontSize: {
-                    xs: "14px",
-                    sm: "28px",
-                    md: "24px",
-                    lg: "38px",
-                    xl: "62px",
-                  },
-                }}
-              >
-                43{" "}
-                <KeyboardArrowRightIcon
-                  sx={{
-                    transform: "translate(-5px, 4px)",
-                    color: "#7E8996",
-                    ml: "10px",
-                  }}
-                />
-              </Typography>
-            </Grid>
-          </Grid> */}
-            </Grid>
+              {/* DataPicker */}
+              {show && (
+                <Grid mb={"35px"} container justifyContent={"space-between"}>
+                  <Grid item xs={6} pr={"10px"}>
+                    <Typography
+                      fontWeight={"600"}
+                      color={"#212B36"}
+                      mb={"10px"}
+                      fontSize={{
+                        xs: "14px",
+                        sm: "20px",
+                        md: "22px",
+                      }}
+                    >
+                      Chọn tháng bắt đầu
+                    </Typography>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <DatePicker
+                        sx={{ width: "100%" }}
+                        label=""
+                        value={value}
+                        onChange={(newValue) => setValue(newValue)}
+                      />
+                    </LocalizationProvider>
+                  </Grid>
+                  <Grid item xs={6} pl={"10px"}>
+                    <Typography
+                      fontWeight={"600"}
+                      mb={"10px"}
+                      color={"#212B36"}
+                      fontSize={{
+                        xs: "14px",
+                        sm: "20px",
+                        md: "22px",
+                      }}
+                    >
+                      Chọn tháng kết thúc
+                    </Typography>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <DatePicker
+                        sx={{ width: "100%" }}
+                        label=""
+                        value={value}
+                        onChange={(newValue) => setValue(newValue)}
+                      />
+                    </LocalizationProvider>
+                  </Grid>
+                </Grid>
+              )}
 
-            <Grid
-              mb={"16px"}
-              onClick={routeChange}
-              container
-              justifyContent={"space-between"}
-            >
-              <Grid item>
-                <Typography
-                  color={"#7E8996"}
-                  fontSize={{
-                    xs: "12px",
-                    sm: "20px",
-                    md: "22px",
-                  }}
-                >
-                  Số lượng hồ sơ đã giới thiệu
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography
-                  color={"#212B36"}
-                  fontSize={{
-                    xs: "12px",
-                    sm: "20px",
-                    md: "22px",
-                  }}
-                >
-                  50
-                  {/* <KeyboardArrowRightIcon
-                    sx={{
-                      transform: "translate(-5px, 4px)",
-                      color: "#7E8996",
-                      ml: "10px",
+              {/* 1 */}
+              <Grid
+                container
+                justifyContent={"space-between"}
+                onClick={routeChange}
+                alignItems={"center"}
+              >
+                <Grid item>
+                  <Typography
+                    color={"#7E8996"}
+                    fontSize={{
+                      xs: "12px",
+                      sm: "20px",
+                      md: "22px",
                     }}
-                  /> */}
-                </Typography>
+                  >
+                    Số lượng hồ sơ đã giới thiệu
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography
+                    display={"flex"}
+                    alignItems={"center"}
+                    color={"#212B36"}
+                    fontSize={{
+                      xs: "12px",
+                      sm: "20px",
+                      md: "22px",
+                    }}
+                  >
+                    50
+                    <KeyboardArrowRightIcon
+                      sx={{
+                        color: "#7E8996",
+                        ml: "10px",
+                      }}
+                    />
+                  </Typography>
+                </Grid>
               </Grid>
+              {/* 2 */}
+              {show && (
+                <Grid
+                  container
+                  justifyContent={"space-between"}
+                  alignItems={"center"}
+                >
+                  <Grid item>
+                    <Typography
+                      color={"#7E8996"}
+                      fontSize={{
+                        xs: "12px",
+                        sm: "20px",
+                        md: "22px",
+                      }}
+                    >
+                      Số lượng hồ sơ chưa hoàn tất
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      display={"flex"}
+                      alignItems={"center"}
+                      color={"#212B36"}
+                      fontSize={{
+                        xs: "14px",
+                        sm: "22px",
+                        md: "24px",
+                      }}
+                    >
+                      5{" "}
+                      <KeyboardArrowRightIcon
+                        sx={{
+                          color: "#7E8996",
+                          ml: "10px",
+                        }}
+                      />
+                    </Typography>
+                  </Grid>
+                </Grid>
+              )}
+              {/* 3 */}
+              {show && (
+                <Grid
+                  container
+                  justifyContent={"space-between"}
+                  alignItems={"center"}
+                >
+                  <Grid item>
+                    <Typography
+                      color={"#7E8996"}
+                      fontSize={{
+                        xs: "12px",
+                        sm: "20px",
+                        md: "22px",
+                      }}
+                    >
+                      Số lượng hồ sơ hoàn tất
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      display={"flex"}
+                      alignItems={"center"}
+                      color={"#212B36"}
+                      fontSize={{
+                        xs: "14px",
+                        sm: "20px",
+                        md: "22px",
+                      }}
+                    >
+                      45{" "}
+                      <KeyboardArrowRightIcon
+                        sx={{
+                          alignItems: "center",
+                          color: "#7E8996",
+                          ml: "10px",
+                        }}
+                      />
+                    </Typography>
+                  </Grid>
+                </Grid>
+              )}
+              {/* 4 */}
+              {show && (
+                <Grid container justifyContent={"space-between"}>
+                  <Grid item>
+                    <Typography
+                      color={"#7E8996"}
+                      fontSize={{
+                        xs: "12px",
+                        sm: "20px",
+                        md: "22px",
+                      }}
+                    >
+                      Số lượng hồ sơ HDBank từ chối
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      display={"flex"}
+                      alignItems={"center"}
+                      color={"#212B36"}
+                      fontSize={{
+                        xs: "14px",
+                        sm: "20px",
+                        md: "22px",
+                      }}
+                    >
+                      2
+                      <KeyboardArrowRightIcon
+                        sx={{
+                          color: "#7E8996",
+                          ml: "10px",
+                        }}
+                      />
+                    </Typography>
+                  </Grid>
+                </Grid>
+              )}
+              {/* 5 */}
+              {show && (
+                <Grid container justifyContent={"space-between"}>
+                  <Grid item>
+                    <Typography
+                      color={"#7E8996"}
+                      fontSize={{
+                        xs: "12px",
+                        sm: "20px",
+                        md: "22px",
+                      }}
+                    >
+                      Số lượng hồ sơ HDBank đã duyệt
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      display={"flex"}
+                      alignItems={"center"}
+                      color={"#212B36"}
+                      fontSize={{
+                        xs: "14px",
+                        sm: "20px",
+                        md: "22px",
+                      }}
+                    >
+                      43
+                      <KeyboardArrowRightIcon
+                        sx={{
+                          color: "#7E8996",
+                          ml: "10px",
+                        }}
+                      />
+                    </Typography>
+                  </Grid>
+                </Grid>
+              )}
             </Grid>
           </Grid>
         </Grid>
